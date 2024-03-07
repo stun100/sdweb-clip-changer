@@ -35,7 +35,7 @@ def apply_clip(sd_model):
 
         if _clip_text_model != "":
             try:
-                sd_model.cond_stage_model.transformer = CLIPTextModel.from_pretrained(_clip_text_model).to(sd_model.cond_stage_model.transformer.device)
+                sd_model.cond_stage_model.transformer = CLIPTextModel.from_pretrained(_clip_text_model).to('cuda')
                 sd_model.cond_stage_model.transformer.requires_grad_(False)
                 print(f"  CLIPTextModel applied: {_clip_text_model}")
             except Exception as e:
